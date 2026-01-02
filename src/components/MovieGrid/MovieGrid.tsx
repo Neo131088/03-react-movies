@@ -1,42 +1,28 @@
-import type { Movie } from "../../types/movie";
-import styles from "./MovieGrid.module.css";
+import css from './MovieGrid.module.css';
+import type { Movie } from '../../types/movie';
 
-interface MovieGridProps {
+export interface MovieGridProps {
   movies: Movie[];
   onSelect: (movie: Movie) => void;
 }
 
-const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
-
-const PLACEHOLDER = "./public/vite.svg";
-
-const MovieGrid = ({ movies, onSelect }: MovieGridProps) => {
-  if (!movies.length) return null;
-
+function MovieGrid({ movies, onSelect }: MovieGridProps) {
   return (
-    <ul className={styles.grid}>
-      {movies.map((movie) => (
-        <li key={movie.id}>
-          <div className={styles.card} onClick={() => onSelect(movie)}>
+    <ul className={css.grid}>
+      {movies.map(movie => (
+        <li key={movie.id} onClick={() => onSelect(movie)}>
+          <div className={css.card}>
             <img
-              className={styles.image}
-              src={
-                movie.poster_path
-                  ? `${IMAGE_BASE_URL}${movie.poster_path}`
-                  : PLACEHOLDER
-              }
+              className={css.image}
+              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
               alt={movie.title}
               loading="lazy"
-              onError={(e) => {
-                e.currentTarget.src = PLACEHOLDER;
-              }}
             />
-            <h2 className={styles.title}>{movie.title}</h2>
+            <h2 className={css.title}>{movie.title}</h2>
           </div>
         </li>
       ))}
     </ul>
   );
-};
-
+}
 export default MovieGrid;
