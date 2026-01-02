@@ -8,7 +8,7 @@ interface MovieGridProps {
 
 const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
-const PLACEHOLDER = "/placeholder.svg";
+const PLACEHOLDER = "./public/vite.svg";
 
 const MovieGrid = ({ movies, onSelect }: MovieGridProps) => {
   if (!movies.length) return null;

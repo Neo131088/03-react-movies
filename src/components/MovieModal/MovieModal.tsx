@@ -7,7 +7,7 @@ const modalRoot = document.getElementById("modal-root")!;
 
 const BACKDROP_URL = "https://image.tmdb.org/t/p/original";
 const POSTER_URL = "https://image.tmdb.org/t/p/w500";
-const PLACEHOLDER = "/placeholder.svg";
+const PLACEHOLDER = "./public/vite.svg";
 
 interface MovieModalProps {
   movie: Movie;
