@@ -21,13 +21,13 @@ export function App() {
     setError(false);
 
     try {
-      const { movies, totalResults } = await fetchMovies(query);
+      const { results, total_results } = await fetchMovies(query);
 
-      if (totalResults === 0) {
+      if (total_results === 0) {
         toast.error("No movies found for your request.");
       }
 
-      setMovies(movies);
+      setMovies(results);
     } catch (err) {
       console.error(err);
       setError(true);
